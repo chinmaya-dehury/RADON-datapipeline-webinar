@@ -1,20 +1,23 @@
-# Azure functions
-This page focus on manually developing the required Azure function and deploying that one on Azure serverless platform.
-## What this funciton will do?
-The `compress` function will 
-    receive the base64-encoded image with other metadata -> convert base64 to image format -> compress the image -> than push that compressed image into the given (hard-coded) blob storage. 
-
-The content of the `compress` azure function can be seen below. You can also download only the function code (`compress` folder) from the `/function` folder. You can also download the complete local azure function code (`RADON-UTR-FunApp2-Py37.7z`).  
-<details> 
-    <summary>__init__.py</summary>
-
-```python
 import logging
 import base64
 
 import gzip
 import azure.functions as func
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
+
+
+# src: https://docs.microsoft.com/en-us/python/api/overview/azure/storage-blob-readme?view=azure-python
+
+
+############### HTTP body input example
+#     {
+#         "blob_name":"name of file",         
+#         "overwrite": True/False,
+#         "data":"base64_encoded_data"
+#     }
+
+
+
 
 
 fileName = ""
@@ -30,6 +33,13 @@ def write_to_file(save_path, data):
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
+    
+
+    ## Create a new container if required
+    # Get the container client from the connection string
+    # container_client = ContainerClient.from_connection_string(conn_str=connect_str, container_name=my_new_container_name)
+    # # create a container named <my_new_container_name>
+    # container_client.create_container()
 
     img = req.params.get('data')
     if not img:
@@ -68,32 +78,3 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
              "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
              status_code=200
         )
-
-```
-
-</details>
-Note down the followings:
-* **Function App name**: RADON-UTR-FunApp2-Py37
-* **Function name**: compress
-* **Container name**: first-container-using-py
-* **input**: Expected input format to the Azure function
-```json
-{
-    "blob_name":"name_of_blob_with_extension",
-    "data":"base64_encoded_image_data"
-}
-```
-You may test the `compress` funciton with postman app.    
-A sample testing screenshot is given below:
-![](../../img/image2.png)
-You can change the argument area acording to your requirement.
-
-### Remark:
-* The **storage account connection string** and the **container name** are hard-coded into the `compress` serverless function.
-* The function is not tested using the Nifi processor as it is not required at the moment.
-
-# What you need to update before deploying this function
-* `connect_str`
-* `my_new_container_name`
-
-You may see this blog post to develop and deploy your Azure function.
