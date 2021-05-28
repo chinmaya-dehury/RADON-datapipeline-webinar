@@ -30,7 +30,8 @@ This demonstrates following capapabilities of RADON data pipeline.
 * No cloud solution vendor lock-in with RADON data pipeline
 
 # System Requirement
-* Python v3.6 as the python runtime for Lambda function
+* Python v3.6 as the python runtime for Lambda function.
+* Python v3.7 for the development of the Azure function.
 
 # Stages
 
@@ -48,8 +49,9 @@ We will go through now following steps:
 * Deploying service blueprint
 * Verifying the service dpeloyment
 
-### Creating service blueprint with RADON IDE
+## **Modelling** service blueprint with RADON IDE
 
+## **Deploying** service blueprint
 #### Consuming data from MinIO server
 Create a credentials file in `/tmp/` directory of the same VM where you will execute the CSAR with opera command.
 The content of `credentials` file should be as follows
@@ -58,8 +60,8 @@ The content of `credentials` file should be as follows
 
 ```
 [default]
-accessKey= username or the access key of MinIO server
-secretKey= your password or the secret key of MinIO server
+accessKey= MinIO username or the access key
+secretKey= your MinIO password or the secret key
 ```
 </details>
 
