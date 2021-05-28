@@ -4,7 +4,7 @@ This page focus on manual development of the required Azure function and deployi
 The `compress` function will 
     receive the base64-encoded image with other metadata -> convert base64 to image format -> compress the image -> than push that compressed image into the given (hard-coded) blob storage. 
 
-The content of the `compress` azure function can be seen below. You can also download only the function code (`compress` folder) from the `/function` folder. You can also download the complete local azure function code (`RADON-UTR-FunApp2-Py37.7z`).  
+The content of the `compress` azure function can be seen below. You can also download only the function code ([`compress`](function/) folder). You can also download the complete local azure function code ([`RADON-UTR-FunApp2-Py37.7z`](RADON-UTR-FunApp2-Py37.7z)).  
 <details> 
     <summary>__init__.py</summary>
 

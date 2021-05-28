@@ -12,6 +12,7 @@ Here, we need two functions:
 * Lambda function name
     * img-grayscale-nifi
     * img-watermark-nifi
+* Download the [img-grayscale-nifi](functions/img-grayscale-nifi) and [img-watermark-nifi](functions/img-grayscale-nifi) functions and deploy in AWS lambda service.
 
 ## Prerequisite (the following steps may not be required)
 Add a HTTP API Gateway 
@@ -26,4 +27,4 @@ Add a HTTP API Gateway
 7. Configure the stage. This step can also be left as default.
 8. Now you should be able to review the configuration. 
 9. If all are okay, click on create.
-10. Now download the `img-grayscale-nifi` and `img-watermark-nifi` functions and deploy in AWS lambda service.
+

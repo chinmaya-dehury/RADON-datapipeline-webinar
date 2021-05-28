@@ -36,10 +36,10 @@ This demonstrates following capapabilities of RADON data pipeline.
 # Stages
 
 ## prerequisites 
-* MinIO setup
+* [MinIO setup](local-sy-configuration/minio/minio.md)
 * Cloud configuration 
-    * Azure cloud setup 
-    * AWS cloud
+    * [Azure cloud setup](cloud-configuration/azure)
+    * [AWS cloud](cloud-configuration/aws)
     * Google cloud 
 * Openstack private cloud
 
