@@ -72,6 +72,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 ```
 
 </details>
+
 Note down the followings:
 * **Function App name**: RADON-UTR-FunApp2-Py37
 * **Function name**: compress
