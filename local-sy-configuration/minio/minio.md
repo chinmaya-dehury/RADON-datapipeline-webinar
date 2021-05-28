@@ -15,8 +15,8 @@ docker run -p 8081:9000 \
        -e "MINIO_ROOT_PASSWORD= minio-password" 
        minio/minio server /data
 ```
-    Here `MINIO_ROOT_USER` is same as Access Key     
-    `MINIO_ROOT_PASSWORD` is same as Secret Key
+Here `MINIO_ROOT_USER` is same as Access Key     
+`MINIO_ROOT_PASSWORD` is same as Secret Key
 * Now you should be able to visit your MinIO UI through http://< ip of the machine >:8081
 
 ## Configuration for this webinar
