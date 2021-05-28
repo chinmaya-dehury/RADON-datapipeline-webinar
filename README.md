@@ -52,7 +52,7 @@ We will go through now following steps:
 
 #### Consuming data from MinIO server
 Create a credentials file in `/tmp/` directory of the same VM where you will execute the CSAR with opera command.
-The content of credentials should be 
+The content of `credentials` file should be as follows
 <details>
       <summary>credentials</summary>
 
