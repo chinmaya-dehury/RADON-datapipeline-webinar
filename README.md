@@ -82,6 +82,8 @@ aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \
 ## **Modelling** service blueprint with RADON IDE
 
 
+
+
 ## **Deploying** service blueprint through xOpera SaaS
 In the RADON IDE, make sure you have the csar exported.
 Create a input.yml with following content inside the radon-particles tree
@@ -94,6 +96,22 @@ Create a input.yml with following content inside the radon-particles tree
 </details>
 
 ## **Deploying** service blueprint through CLI
+### Quick xOpera CLI installation steps:
+```bash
+sudo apt update
+sudo apt install -y python3-venv python3-wheel python-wheel-common
+mkdir ~/opera && cd ~/opera
+python3 -m venv .venv && . .venv/bin/activate
+pip install --upgrade pip
+pip install opera
+pip install -U opera[openstack]
+```
+Details steps are available ![here](https://xlab-si.github.io/xopera-docs/opera_cli.html)
+### Fixing the service template from potential future errors
+* Open the service template (the .tosca file)
+* Check if somewhere `"{get_artifact: ....}"` line is with in double quote. If so just remove the double quote. 
+* e.g. `cred_file_path: "{ get_artifact: [SELF, credFile ] }"` should be changed to `cred_file_path: { get_artifact: [SELF, credFile ] }`
+
 ### Configuring EC2
 * go to ./servicetemplates/radon.blueprints.example/datapipe-webinar/files/EC2_0/keyFile
 * chmod 400 radon-pipeline.pem
