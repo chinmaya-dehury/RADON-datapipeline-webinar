@@ -69,9 +69,8 @@ We will go through now following steps:
 * Openstack
     * Get the public key to connect to Openstack VM. Ask you Openstack administrator if you dont find one.
 
-**Summary**   
-Name -> Path -> FileMode
------------------------
+### Summary
+**Name** -> **Path** -> **FileMode**   
 openstack-chinmayadehury  ->  /root/.ssh/openstack/openstack-chinmayadehury  -> 755 \
 minio-credentials ->  /root/.ssh/minio/minio-credentials  -> 755 \
 google-cloud-storage  -> /root/.ssh/google/google-cloud-storage  -> 755 \
@@ -106,7 +105,7 @@ pip install --upgrade pip
 pip install opera
 pip install -U opera[openstack]
 ```
-Details steps are available ![here](https://xlab-si.github.io/xopera-docs/opera_cli.html)
+Details steps are available [here](https://xlab-si.github.io/xopera-docs/opera_cli.html)
 ### Fixing the service template from potential future errors
 * Open the service template (the .tosca file)
 * Check if somewhere `"{get_artifact: ....}"` line is with in double quote. If so just remove the double quote. 
