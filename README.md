@@ -49,9 +49,55 @@ We will go through now following steps:
 * Deploying service blueprint
 * Verifying the service dpeloyment
 
+## Pre-modelling configurations
+### credentials
+* Google
+    * Google credentials to write data to Google storage bucket
+    * Go to ![Google Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts)
+    * Select the project
+    * Under `Actions` (three dots) -> `Manage keys` -> `Create new key` -> `JSON` -> `CREATE`
+    * Now the credential json will be downloaded. Save it somewhere.
+* AWS
+    * Getting Access Keys
+        * Go to IAM service
+        * Click on **My access key** under _Quick links_
+        * Create a new acess key. You can have at max two access keys.
+    * Getting pem key for EC2
+        * Go to **EC2** service
+        * Under **Network & Secutiry**, click on **Key Pairs**.
+        * Create a new one here and download it and save it somewhere.
+* Openstack
+    * Get the public key to connect to Openstack VM. Ask you Openstack administrator if you dont find one.
+
+**Summary**
+Name -> Path -> FileMode
+-----------------------
+openstack-chinmayadehury  ->  /root/.ssh/openstack/openstack-chinmayadehury  -> 755 \
+minio-credentials ->  /root/.ssh/minio/minio-credentials  -> 755 \
+google-cloud-storage  -> /root/.ssh/google/google-cloud-storage  -> 755 \
+ec2-radon-pipeline -> /root/.ssh/ec2/ec2-radon-pipeline -> 400 \
+aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \
+
+
 ## **Modelling** service blueprint with RADON IDE
 
-## **Deploying** service blueprint
+
+## **Deploying** service blueprint through xOpera SaaS
+In the RADON IDE, make sure you have the csar exported.
+Create a input.yml with following content inside the radon-particles tree
+<details>
+    <summary>input.yml</summary>
+
+```
+{}
+```
+</details>
+
+## **Deploying** service blueprint through CLI
+### Configuring EC2
+* go to ./servicetemplates/radon.blueprints.example/datapipe-webinar/files/EC2_0/keyFile
+* chmod 400 radon-pipeline.pem
+
 #### Consuming data from MinIO server
 Create a credentials file in `/tmp/` directory of the same VM where you will execute the CSAR with opera command.
 The content of `credentials` file should be as follows
