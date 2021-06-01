@@ -53,7 +53,7 @@ We will go through now following steps:
 ### credentials
 * Google
     * Google credentials to write data to Google storage bucket
-    * Go to ![Google Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts)
+    * Go to [Google Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts)
     * Select the project
     * Under `Actions` (three dots) -> `Manage keys` -> `Create new key` -> `JSON` -> `CREATE`
     * Now the credential json will be downloaded. Save it somewhere.
