@@ -69,7 +69,7 @@ We will go through now following steps:
 * Openstack
     * Get the public key to connect to Openstack VM. Ask you Openstack administrator if you dont find one.
 
-**Summary**
+**Summary**   
 Name -> Path -> FileMode
 -----------------------
 openstack-chinmayadehury  ->  /root/.ssh/openstack/openstack-chinmayadehury  -> 755 \
