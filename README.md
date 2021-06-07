@@ -78,9 +78,18 @@ ec2-radon-pipeline -> /root/.ssh/ec2/ec2-radon-pipeline -> 400 \
 aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \
 
 
-## **Modelling** service blueprint with RADON IDE
+## **Modelling** service blueprint with RADON IDE\
+Here, you need to invoke the RADON GMT to model your service template in a web graphical interface. After that you need to export the modelled service template into a CSAR.   
+Here, you can either use the existing CSAR ( modify according to your requirement) OR create a service template from the scratch:
+### Create from scratch
+### Reuse the existing CSAR
 
+    
+Open the GMT 
+Add following nodes 
 
+The final service template in GMT should look like this
+<img src="img/serviceTemplateCSAR.png">
 
 ## Pre-deployment configuration
 ### Configuraton of AWS security group 
@@ -115,7 +124,7 @@ pip install --upgrade pip
 pip install opera
 pip install -U opera[openstack]
 ```
-Details steps are available [here](https://xlab-si.github.io/xopera-docs/opera_cli.html)
+Detailed steps to install xOpera are available [here](https://xlab-si.github.io/xopera-docs/opera_cli.html)
 ### Fixing the service template from potential future errors
 * Open the service template (the .tosca file)
 * Check if somewhere `"{get_artifact: ....}"` line is within double quote. If so just remove the double quote. 
@@ -125,6 +134,11 @@ Details steps are available [here](https://xlab-si.github.io/xopera-docs/opera_c
 * go to ./servicetemplates/radon.blueprints.example/datapipe-webinar/files/EC2_0/keyFile
 * chmod 400 radon-pipeline.pem
 __Make sure that other key file for OpenStack Instance (if any) have the same permission.__
+
+
+### invoke xOpera for deployment: Final Step
+
+<img src="img/finalDeployComndOutput.png">
 
 #### Consuming data from MinIO server
 Create a credentials file in `/tmp/` directory of the same VM where you will execute the CSAR with opera command.
@@ -138,6 +152,7 @@ accessKey= MinIO username or the access key
 secretKey= your MinIO password or the secret key
 ```
 </details>
+
 
 
 
