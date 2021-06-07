@@ -1,13 +1,13 @@
 # RADON Data Pipeline Webinar
 
-This repository mainly focuses on demonstration of modeling TOSCA-based data pipeline service using RADON tools.
+This repository mainly focuses on demonstration of modeling and orchestration of TOSCA-based data pipeline services using RADON tools.
 
 # What to Demonstrate?
-We will implement following usecase, where, you upload your image to MinIO bucket as the input. As output, the grayscale and watermarked image will be stored in your Google Cloud Storage bucket and the same modified image will be compressed and stored in Azure Blob storage.
+We will implement following usecase, where, you upload your image to MinIO bucket as the input. As output, the grayscale and blurred image will be stored in your Google Cloud Storage bucket and the same modified image will be compressed and stored in Azure Blob storage.
 
 <img src="img/main-worklow.png">
 
-*  First phase
+*  First phase of the webinar
     *  Open RADON IDE
     *  Short Discussion on Data pipeline pallets
     *  Show the use case figure that will be demonstrated
@@ -15,7 +15,7 @@ We will implement following usecase, where, you upload your image to MinIO bucke
     *  Export the service template to IDE
     *  Deploy the service template
     *  Show the data flow
-*  Second phase
+*  Second phase of the webinar
     *  Open the RADON IDE 
     *  Create a service template using GMT with some bugs
     *  Export the service template
@@ -31,7 +31,7 @@ This demonstrates following capapabilities of RADON data pipeline.
 
 # System Requirement
 * Python v3.6 as the python runtime for Lambda function.
-* Python v3.7 for the development of the Azure function.
+* Python v3.7 for the creating and deploying of the Azure function.
 
 # Stages
 
@@ -46,9 +46,7 @@ This demonstrates following capapabilities of RADON data pipeline.
     * [xOpera orchestrator](local-sy-configuration/xopera/xopera.md)
 
 
-
-## main stages
-We will go through now following steps:
+Now, we will go through following steps:
 * Creating service blueprint with RADON IDE
 * Deploying service blueprint
 * Verifying the service dpeloyment
@@ -80,20 +78,28 @@ Here, you need to invoke the RADON GMT to model your service template in a web g
 Here, you can either use the existing CSAR ( modify according to your requirement) OR create a service template from the scratch:
 ### Create from scratch
 ### Reuse the existing CSAR
-If you are reusing the existing CSAR, make sure that you have modified the following essential properties of tosca nodes
-
-* EC2 node
-* AWS platform node
-* Openstack node
-    * key_name
-* two Nifi nodes 
-* ConsMinIO
-* InvokeLambda for Img_grayscale and Img_watermark 
-* InvokeImageFaaSFunction
-* PubGCS
-    
-Open the GMT 
-Add following nodes 
+If you are reusing the existing CSAR, make sure that 
+* you have modified the following essential properties of tosca nodes
+    * EC2 node
+        * Update `ssh_key_name`, `vpc_subnet_id`
+        * `image: "ami-0b850cf02cc00fdc8"` is recommended, as this is __centos__ image and this service template is tested on this image.
+        * Cross check that `instance_type` is atleast __t2.medium__ and `ssh_user` is __centos__
+    * AWS platform node
+        * Cross check the `region` properties.
+    * Openstack node
+        * Update `key_name` properties
+    * two Nifi nodes 
+        * nothing to update here
+        * Just make sure that `component_version` is with the latest Nifi version
+    * ConsMinIO
+        * Update `MinIO_Endpoint` properties
+        * Maybe cross check the `BucketName` properties
+    * InvokeLambda for Img_grayscale and Img_watermark 
+        * probably need to cross check the `region` properties.
+    * InvokeImageFaaSFunction
+        * Update `function_URL` properties
+    * PubGCS
+        * Update `BucketName`, `ProjectID` 
 
 The final service template in GMT should look like this
 <img src="img/serviceTemplateCSAR.png">

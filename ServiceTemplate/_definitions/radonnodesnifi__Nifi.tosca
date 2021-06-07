@@ -1,0 +1,107 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+  - file: radonartifacts__Ansible.tosca
+    namespace_uri: radon.artifacts
+    namespace_prefix: radonartifacts
+  - file: radonnodesabstract__DataPipeline.tosca
+    namespace_uri: radon.nodes.abstract
+    namespace_prefix: radonnodesabstract
+node_types:
+  radon.nodes.nifi.Nifi:
+    derived_from: tosca.nodes.SoftwareComponent
+    metadata:
+      targetNamespace: "radon.nodes.nifi"
+      abstract: "false"
+      final: "false"
+    properties:
+      port:
+        type: integer
+        description: The port exposed by Apache Nifi
+        required: false
+        default: 8080
+      webinterface_public:
+        type: boolean
+        description: Whether NiFi web intefrace should be publicly accessible
+        default: false
+      component_version:
+        type: string
+        description: The version of Apache Nifi
+        default: "1.13.1"
+    capabilities:
+      host:
+        occurrences: [ 1, UNBOUNDED ]
+        valid_source_types: [ radon.nodes.abstract.DataPipeline ]
+        type: tosca.capabilities.Container
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        operations:
+          stop:
+            implementation:
+              primary: /nodetypes/radon.nodes.nifi/Nifi/files/stop/stop.yml
+              timeout: 0
+          start:
+            inputs:
+              tarball_version:
+                type: string
+                required: true
+                default: { get_property: [ SELF, component_version ] }
+            implementation:
+              primary: /nodetypes/radon.nodes.nifi/Nifi/files/start/start.yml
+              timeout: 0
+          create:
+            inputs:
+              tarball_version:
+                type: string
+                required: true
+                default: { get_property: [ SELF, component_version ] }
+            implementation:
+              primary: /nodetypes/radon.nodes.nifi/Nifi/files/create/create.yml
+              timeout: 0
+          configure:
+            inputs:
+              host_vm_ip:
+                type: string
+                required: true
+                default: { get_attribute: [ SELF, host, public_ip ] }
+              port:
+                type: integer
+                required: true
+                default: { get_property: [ SELF, port ] }
+              tarball_version:
+                type: string
+                required: true
+                default: { get_property: [ SELF, component_version ] }
+              webinterface_public:
+                type: boolean
+                required: true
+                default: { get_property: [ SELF, webinterface_public ] }
+            implementation:
+              primary: /nodetypes/radon.nodes.nifi/Nifi/files/configure/configure.yml
+              timeout: 0
+          delete:
+            inputs:
+              tarball_version:
+                type: string
+                required: true
+                default: { get_property: [ SELF, component_version ] }
+            implementation:
+              primary: /nodetypes/radon.nodes.nifi/Nifi/files/delete/delete.yml
+              timeout: 0
+    artifacts:
+      stop:
+        type: radon.artifacts.Ansible
+        file: /nodetypes/radon.nodes.nifi/Nifi/files/stop/stop.yml
+      start:
+        type: radon.artifacts.Ansible
+        file: /nodetypes/radon.nodes.nifi/Nifi/files/start/start.yml
+      create:
+        type: radon.artifacts.Ansible
+        file: /nodetypes/radon.nodes.nifi/Nifi/files/create/create.yml
+      configure:
+        type: radon.artifacts.Ansible
+        file: /nodetypes/radon.nodes.nifi/Nifi/files/configure/configure.yml
+      delete:
+        type: radon.artifacts.Ansible
+        file: /nodetypes/radon.nodes.nifi/Nifi/files/delete/delete.yml

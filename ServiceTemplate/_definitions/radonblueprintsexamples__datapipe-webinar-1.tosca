@@ -1,0 +1,254 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+metadata:
+  targetNamespace: "radon.blueprints.examples"
+  name: "datapipe-webinar-1"
+imports:
+  - file: radonnodesnifi__Nifi.tosca
+    namespace_uri: radon.nodes.nifi
+    namespace_prefix: radonnodesnifi
+  - file: radonnodesdatapipelinedestination__PubGCS.tosca
+    namespace_uri: radon.nodes.datapipeline.destination
+    namespace_prefix: radonnodesdatapipelinedestination
+  - file: radonnodesdatapipelineprocess__InvokeLambda.tosca
+    namespace_uri: radon.nodes.datapipeline.process
+    namespace_prefix: radonnodesdatapipelineprocess
+  - file: radonnodesdatapipelinesource__ConsMinIO.tosca
+    namespace_uri: radon.nodes.datapipeline.source
+    namespace_prefix: radonnodesdatapipelinesource
+  - file: radonnodesaws__AwsPlatform.tosca
+    namespace_uri: radon.nodes.aws
+    namespace_prefix: radonnodesaws
+  - file: radonnodesVM__OpenStack.tosca
+    namespace_uri: radon.nodes.VM
+    namespace_prefix: radonnodesVM
+  - file: radonnodesVM__EC2.tosca
+    namespace_uri: radon.nodes.VM
+    namespace_prefix: radonnodesVM
+  - file: radonnodesdatapipelineprocess__InvokeImageFaaSFunction.tosca
+    namespace_uri: radon.nodes.datapipeline.process
+    namespace_prefix: radonnodesdatapipelineprocess
+  - file: radonrelationshipsdatapipeline__ConnectNifiLocal.tosca
+    namespace_uri: radon.relationships.datapipeline
+    namespace_prefix: radonrelationshipsdatapipeline
+  - file: radonrelationshipsdatapipeline__ConnectNifiRemote.tosca
+    namespace_uri: radon.relationships.datapipeline
+    namespace_prefix: radonrelationshipsdatapipeline
+topology_template:
+  node_templates:
+    PubGCS_0:
+      type: radon.nodes.datapipeline.destination.PubGCS
+      metadata:
+        x: "1383"
+        y: "242"
+        displayName: "Publish Final img to GCS"
+      properties:
+        BucketName: "radongcs"
+        cred_file_path: "{ get_artifact: [SELF, credFile ] }"
+        schedulingStrategy: "EVENT_DRIVEN"
+        ProjectID: "radon-825040-utr"
+        schedulingPeriodCRON: "* * * * * ?"
+      requirements:
+        - host:
+            node: Nifi_1
+            relationship: con_HostedOn_5
+            capability: host
+      artifacts:
+        credFile:
+          type: tosca.artifacts.File
+          file: /servicetemplates/radon.blueprints.examples/datapipe-webinar-1/files/PubGCS_0/credFile/google-cloud-storage.json
+    Nifi_1:
+      type: radon.nodes.nifi.Nifi
+      metadata:
+        x: "743"
+        y: "450"
+        displayName: "Nifi"
+      properties:
+        port: 8080
+        webinterface_public: true
+        component_version: "1.13.2"
+      requirements:
+        - host:
+            node: EC2_0
+            relationship: con_HostedOn_2
+            capability: host
+    InvokeLambda_1:
+      type: radon.nodes.datapipeline.process.InvokeLambda
+      metadata:
+        x: "957"
+        y: "189"
+        displayName: "Img_blur"
+      properties:
+        cred_file_path: "{ get_artifact: [SELF, credFile]}"
+        schedulingStrategy: "EVENT_DRIVEN"
+        function_name: "img-blur-nifi"
+        schedulingPeriodCRON: "* * * * * ?"
+        region: "eu-west-1"
+      requirements:
+        - ConnectToPipeline:
+            node: PubGCS_0
+            relationship: con_ConnectNifiLocal_2
+            capability: ConnectToPipeline
+        - ConnectToPipeline:
+            node: InvokeImageFaaSFunction_0
+            relationship: con_ConnectNifiLocal_0
+            capability: ConnectToPipelineRemote
+        - host:
+            node: Nifi_1
+            relationship: con_HostedOn_7
+            capability: host
+      artifacts:
+        credFile:
+          type: tosca.artifacts.File
+          file: /servicetemplates/radon.blueprints.examples/datapipe-webinar-1/files/InvokeLambda_1/credFile/aws-credentials
+    InvokeLambda_0:
+      type: radon.nodes.datapipeline.process.InvokeLambda
+      metadata:
+        x: "596"
+        y: "203"
+        displayName: "Img_grayscale"
+      properties:
+        cred_file_path: "{ get_artifact: [SELF, credFile]}"
+        schedulingStrategy: "EVENT_DRIVEN"
+        function_name: "img-grayscale-nifi"
+        schedulingPeriodCRON: "* * * * * ?"
+        region: "eu-west-1"
+      requirements:
+        - ConnectToPipeline:
+            node: InvokeLambda_1
+            relationship: con_ConnectNifiLocal_1
+            capability: ConnectToPipeline
+        - host:
+            node: Nifi_1
+            relationship: con_HostedOn_4
+            capability: host
+      artifacts:
+        credFile:
+          type: tosca.artifacts.File
+          file: /servicetemplates/radon.blueprints.examples/datapipe-webinar-1/files/InvokeLambda_0/credFile/aws-credentials
+    ConsMinIO_0:
+      type: radon.nodes.datapipeline.source.ConsMinIO
+      metadata:
+        x: "312"
+        y: "309"
+        displayName: "ConsMinIO"
+      properties:
+        BucketName: "firstbucket"
+        cred_file_path: "{ get_artifact: [SELF, credentials]}"
+        MinIO_Endpoint: "http://111.11.11.11:xxxx"
+        schedulingStrategy: "EVENT_DRIVEN"
+        schedulingPeriodCRON: "* * * * * ?"
+        Region: "eu-west-1"
+      requirements:
+        - connectToPipelineRemote:
+            node: InvokeLambda_0
+            relationship: con_ConnectNifiRemote_0
+            capability: ConnectToPipelineRemote
+        - host:
+            node: Nifi_0
+            relationship: con_HostedOn_3
+            capability: host
+      artifacts:
+        credentials:
+          type: tosca.artifacts.File
+          file: /servicetemplates/radon.blueprints.examples/datapipe-webinar-1/files/ConsMinIO_0/credentials/minio-credentials
+    AwsPlatform_0:
+      type: radon.nodes.aws.AwsPlatform
+      metadata:
+        x: "1190"
+        y: "626"
+        displayName: "AwsPlatform"
+      properties:
+        name: "AWS"
+        region: "eu-west-1"
+    OpenStack_0:
+      type: radon.nodes.VM.OpenStack
+      metadata:
+        x: "318"
+        y: "620"
+        displayName: "OpenStack"
+      properties:
+        flavor: "m1.medium"
+        key_name: "chinmayadehury"
+        image: "13a94b11-98ee-43a4-ad29-00ae97e8f790"
+        ssh_username: "centos"
+        name: "NifiHost2-temp"
+        network: "provider_64_net"
+    InvokeImageFaaSFunction_0:
+      type: radon.nodes.datapipeline.process.InvokeImageFaaSFunction
+      metadata:
+        x: "1275"
+        y: "440"
+        displayName: "InvokeImageFaaSFunction"
+      properties:
+        function_URL: "Give_your_function_endpoint_here"
+        schedulingStrategy: "EVENT_DRIVEN"
+        schedulingPeriodCRON: "* * * * * ?"
+        HTTP_method: "POST"
+      requirements:
+        - host:
+            node: Nifi_1
+            relationship: con_HostedOn_8
+            capability: host
+    Nifi_0:
+      type: radon.nodes.nifi.Nifi
+      metadata:
+        x: "318"
+        y: "460"
+        displayName: "Nifi"
+      properties:
+        port: 8080
+        webinterface_public: true
+        component_version: "1.13.2"
+      requirements:
+        - host:
+            node: OpenStack_0
+            relationship: con_HostedOn_0
+            capability: host
+    EC2_0:
+      type: radon.nodes.VM.EC2
+      metadata:
+        x: "744"
+        y: "625"
+        displayName: "EC2"
+      properties:
+        image: "ami-0b850cf02cc00fdc8"
+        ssh_key_name: "radon-pipeline"
+        vpc_subnet_id: "subnet-82dfabd8"
+        instance_type: "t2.medium"
+        ssh_key_file: "{ get_artifact: [SELF, keyFile]}"
+        ssh_user: "centos"
+      requirements:
+        - host:
+            node: AwsPlatform_0
+            relationship: con_HostedOn_1
+            capability: host
+      artifacts:
+        keyFile:
+          type: tosca.artifacts.File
+          file: /servicetemplates/radon.blueprints.examples/datapipe-webinar-1/files/EC2_0/keyFile/ec2-radon-pipeline.pem
+  relationship_templates:
+    con_HostedOn_2:
+      type: tosca.relationships.HostedOn
+    con_HostedOn_3:
+      type: tosca.relationships.HostedOn
+    con_HostedOn_0:
+      type: tosca.relationships.HostedOn
+    con_HostedOn_1:
+      type: tosca.relationships.HostedOn
+    con_ConnectNifiLocal_0:
+      type: radon.relationships.datapipeline.ConnectNifiLocal
+    con_ConnectNifiLocal_2:
+      type: radon.relationships.datapipeline.ConnectNifiLocal
+    con_ConnectNifiRemote_0:
+      type: radon.relationships.datapipeline.ConnectNifiRemote
+    con_ConnectNifiLocal_1:
+      type: radon.relationships.datapipeline.ConnectNifiLocal
+    con_HostedOn_8:
+      type: tosca.relationships.HostedOn
+    con_HostedOn_7:
+      type: tosca.relationships.HostedOn
+    con_HostedOn_4:
+      type: tosca.relationships.HostedOn
+    con_HostedOn_5:
+      type: tosca.relationships.HostedOn

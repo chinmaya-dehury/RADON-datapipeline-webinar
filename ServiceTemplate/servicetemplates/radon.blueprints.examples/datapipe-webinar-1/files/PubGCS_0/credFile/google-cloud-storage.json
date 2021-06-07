@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "project_id_here",
+  "private_key_id": "xyzzz",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCSGp/iKW77mGTs\nudr5MeQl9mFBkWPDn5wkAKTrxYHMDxk6D67RmpcW/ckwDGZS8fUz3GZ73wRkeiMe\n5iB2YM7wYz2rkCbJwnv4Ucd52oj7CTslpnc3Tud4sGb43+W1cAqwRyoDUyHtx/Du\nI/AUD3MLJjpebshHYTpYNWelrXnOC5vZ2QKBgQC5XbCtQ4RiBspCeSnyuRCbKjrRP+NNQYPi\nNftZ1l8/XnZvSDJHSdyUzHpw/2zs+0w2Tsujps7CmeMDV65zA/kTxRoscORe0FbE\nlQw7zKxpc2pRo1bMQVo4NocqOeJShXRoN/pT3H7ynFhFo5kULGFVV4gh8c24yWapa5Zj1zfD+ACjXcEuDo0TnHsxvc2+UUtp1c\ncRMGM4RKKtKYBRPNTrVPoGKWDXGH4pdyKEU7Z99VwfHrapWGuisY5l/rtm3uYiDB\nxZ0CSFemIJMIUKII5VGIyDjCeEzW7QsMxNHu0UnFGYyD/hZ9+3pBQv8xAoGBAIv2\nHgz1SePqVJXUfsPy0IMYY8jTgIE40qffMqYmo0xpuutTjAMf1hnUoUfNnEvl5bVe6RupDGPIFE2KXFv9zut9S+6uBwmJN4TJSEhE+6DX0V\n0/D3JrByzhTAUZYkHKEA+lnQNOp74KcWoI3dPGeQzebRh/8calJ9uX0trsEBc93Y\ntZlKwdcf/fxc6nfEfGEZg+E=\n-----END PRIVATE KEY-----\n",
+  "client_email": "12345-compute@developer.gserviceaccount.com",
+  "client_id": "14352635",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/12345-compute%40developer.gserviceaccount.com"
+}

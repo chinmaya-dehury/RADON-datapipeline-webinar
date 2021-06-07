@@ -1,0 +1,768 @@
+TOSCA-Meta-File-Version: 1.1
+CSAR-Version: 1.1
+Created-By: Winery 3.0.0-SNAPSHOT
+Entry-Definitions: _definitions/radonblueprintsexamples__datapipe-webinar-1.tosca
+
+Name: nodetypes/radon.nodes.datapipeline/DestinationPB/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonnodesabstract__ApiGateway.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: datatypes/radon.datatypes/Activity/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesdatapipelineprocess__RemoteAction.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonnodesdatapipelinedestination__PublishDataEndPoint.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.monitoring/PushGateway/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: datatypes/radon.datatypes/Event/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.destination/PubGCS/files/create/create.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.monitoring/PushGateway/README.md
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/Function/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.aws/AwsDynamoDBTable/appearance/bigIcon.png
+Content-Type: image/jpeg
+
+Name: relationshiptypes/radon.relationships.aws/AwsTriggers/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesdatapipelineprocess__FaaSFunction.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonnodesmonitoring__PushGateway.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline.destination/PublishDataEndPoint/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.VM/OpenStack/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.datapipeline/PipelineBlock/files/delete/delete.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeLambda/files/configure/configure.yml
+Content-Type: text/plain
+
+Name: capabilitytypes/radon.capabilities.datapipeline/ConnectToPipeline/LICENSE
+Content-Type: text/plain
+
+
+Name: relationshiptypes/radon.relationships.monitoring/AWSIsMonitoredBy/files/grafana-injection.yml
+Content-Type: text/plain
+
+Name: _definitions/tyIgeneral__Precedence.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/DataPipeline/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.nifi/Nifi/files/stop/stop.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.monitoring/PushGateway/files/configure/configure.yml
+Content-Type: text/plain
+
+Name: relationshiptypes/radon.relationships.datapipeline/ConnectNifiRemote/README.md
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsS3Bucket/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.abstract/ApiGateway/LICENSE
+Content-Type: text/plain
+
+Name: servicetemplates/radon.blueprints.examples/datapipe-webinar-1/files/ConsMinIO_0/credentials/minio-credentials
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeImageFaaSFunction/files/create/create.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/DataPipeline/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: relationshiptypes/radon.relationships.datapipeline/ConnectNifiLocal/files/connect.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline/SourcePB/LICENSE
+Content-Type: text/plain
+
+Name: relationshiptypes/radon.relationships.datapipeline/ConnectNifiLocal/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonrelationshipsaws__AwsApiGatewayTriggers.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: relationshiptypes/radon.relationships.datapipeline/ConnectNifiLocal/README.md
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.VM/OpenStack/files/delete/delete.yml
+Content-Type: text/plain
+
+Name: datatypes/radon.datatypes/Activity/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.datapipeline.destination/PubGCS/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesabstract__Function.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonnodesnifi__Nifi.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonnodesdatapipeline__PipelineBlock.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: relationshiptypes/radon.relationships/Triggers/README.md
+Content-Type: text/x-web-markdown
+
+Name: capabilitytypes/radon.capabilities/Invocable/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.monitoring/PushGateway/files/delete/delete.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsS3Bucket/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesdatapipelinesource__ConsumeRemote.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonnodesaws__AwsS3Bucket.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline/PipelineBlock/README.md
+Content-Type: text/plain
+
+Name: _definitions/radonnodesabstract__DataPipeline.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline.process/RemoteAction/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonrelationshipsaws__AwsTriggers.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: capabilitytypes/radon.capabilities.container/DockerRuntime/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.datapipeline/DestinationPB/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsumeDataEndPoint/README.md
+Content-Type: text/x-web-markdown
+
+
+Name: _definitions/radonnodesdatapipeline__SourcePB.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeImageFaaSFunction/files/templateFile_localConn/FaaS_localConn.xml
+Content-Type: application/xml
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunctionFromS3/README.md
+Content-Type: text/x-web-markdown
+
+Name: capabilitytypes/radon.capabilities.monitoring/Monitor/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.monitoring/PushGateway/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.abstract/ObjectStorage/LICENSE
+Content-Type: text/plain
+
+Name: servicetemplates/radon.blueprints.examples/datapipe-webinar-1/files/InvokeLambda_1/credFile/aws-credentials
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/ApiGateway/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.docker/DockerApplication/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: _definitions/radonrelationshipsmonitoring__AWSIsMonitoredBy.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/tyIgeneral__Event.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsMinIO/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonnodesaws__AwsLambdaFunctionFromS3.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.nifi/Nifi/files/start/start.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsMinIO/files/create/create.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeLambda/files/create/create.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeImageFaaSFunction/appearance/bigIcon.png
+Content-Type: image/png
+
+
+Name: nodetypes/radon.nodes.VM/EC2/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: servicetemplates/radon.blueprints.examples/datapipe-webinar-1/files/PubGCS_0/credFile/google-cloud-storage.json
+Content-Type: application/json
+
+Name: nodetypes/radon.nodes.datapipeline/MidwayPB/README.md
+Content-Type: text/x-web-markdown
+
+
+Name: datatypes/radon.datatypes/Entry/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonblueprintsexamples__datapipe-webinar-1.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/tyIgeneral__Interaction.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: relationshiptypes/radon.relationships/Triggers/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.nifi/Nifi/files/configure/configure.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.destination/PublishDataEndPoint/README.md
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.VM/EC2/files/delete/delete.yml
+Content-Type: text/plain
+
+Name: artifacttypes/radon.artifacts/Ansible/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesabstract__ContainerRuntime.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeLambda/LICENSE
+Content-Type: text/plain
+
+
+Name: _definitions/radoncapabilitiesmonitoring__Monitor.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: servicetemplates/radon.blueprints.examples/datapipe-webinar-1/files/EC2_0/keyFile/ec2-radon-pipeline.pem
+Content-Type: application/x-x509-key; format=pem
+
+Name: datatypes/radon.datatypes/Entry/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.aws/AwsDynamoDBTable/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonnodesaws__AwsApiGateway.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/Database/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: _definitions/radoncapabilitiescontainer__DockerRuntime.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/ContainerApplication/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonrelationshipsdatapipeline__ConnectNifiLocal.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/tyIgeneral__Activity.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline.destination/PubGCS/files/PubGCSPB_template/PubGCSPB.xml
+Content-Type: application/xml
+
+Name: nodetypes/radon.nodes.VM/OpenStack/files/create/create.yml
+Content-Type: text/plain
+
+Name: _definitions/tyIgeneral__Entry.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/files/policy/policy.json
+Content-Type: application/json
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeImageFaaSFunction/files/start/start.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/FaaSFunction/LICENSE
+Content-Type: text/plain
+
+
+Name: nodetypes/radon.nodes.aws/AwsDynamoDBTable/files/delete/delete.yml
+Content-Type: application/octet-stream
+
+Name: _definitions/radonrelationships__Triggers.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.nifi/Nifi/files/delete/delete.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/RemoteAction/README.md
+Content-Type: text/plain
+
+Name: capabilitytypes/radon.capabilities.container/DockerRuntime/LICENSE
+Content-Type: text/plain
+
+Name: datatypes/radon.datatypes/Event/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesVM__EC2.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsDynamoDBTable/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesabstract__CloudPlatform.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunctionFromS3/files/create/create.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/ApiGateway/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsMinIO/appearance/bigIcon.png
+Content-Type: image/jpeg
+
+Name: nodetypes/radon.nodes.abstract/ContainerApplication/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.nifi/Nifi/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: relationshiptypes/radon.relationships/ConnectsTo/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline/MidwayPB/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonnodesdatapipelinesource__ConsMinIO.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline.process/FaaSFunction/README.md
+Content-Type: text/x-web-markdown
+
+
+Name: datatypes/radon.datatypes/Precedence/LICENSE
+Content-Type: text/plain
+
+Name: datatypes/radon.datatypes/Interaction/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.VM/EC2/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.destination/PubGCS/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.abstract/ObjectStorage/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.aws/AwsApiGateway/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsApiGateway/files/create/create.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeImageFaaSFunction/files/configure/configure.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/Function/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: datatypes/radon.datatypes/Interaction/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.abstract/ContainerApplication/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.aws/AwsApiGateway/files/configure/configure.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeLambda/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.datapipeline.destination/PubGCS/files/configure/configure.yml
+Content-Type: text/plain
+
+Name: artifacttypes/radon.artifacts/Ansible/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonnodesabstract__ContainerApplication.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeImageFaaSFunction/files/delete/delete.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/CloudPlatform/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.aws/AwsApiGateway/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.docker/DockerApplication/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.nifi/Nifi/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.docker/DockerApplication/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: _definitions/radonnodesabstract__Database.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesdatapipeline__DestinationPB.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/Function/README.md
+Content-Type: text/x-web-markdown
+
+Name: datatypes/radon.datatypes/RandomVariable/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/appearance/bigIcon.png
+Content-Type: image/jpeg
+
+Name: nodetypes/radon.nodes.abstract/ContainerApplication/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.monitoring/PushGateway/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline/PipelineBlock/files/stop/stop.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunctionFromS3/appearance/bigIcon.png
+Content-Type: image/jpeg
+
+Name: relationshiptypes/radon.relationships/ConnectsTo/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesdatapipelineprocess__InvokeImageFaaSFunction.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/README.md
+Content-Type: text/x-web-markdown
+
+Name: capabilitytypes/radon.capabilities.datapipeline/ConnectToPipeline/README.md
+Content-Type: text/x-web-markdown
+
+
+Name: nodetypes/radon.nodes.abstract/DataPipeline/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/files/create/create.yml
+Content-Type: text/plain
+
+Name: _definitions/tyIgeneral__RandomVariable.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.VM/EC2/README.md
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.destination/PublishRemote/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline/SourcePB/README.md
+Content-Type: text/plain
+
+Name: _definitions/radonnodesVM__OpenStack.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.VM/OpenStack/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesaws__AwsPlatform.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/Database/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.nifi/Nifi/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: datatypes/radon.datatypes/Precedence/README.md
+Content-Type: text/x-web-markdown
+
+Name: datatypes/radon.datatypes/RandomVariable/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsMinIO/README.md
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeImageFaaSFunction/LICENSE
+Content-Type: text/plain
+
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeLambda/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.nifi/Nifi/files/create/create.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.VM/EC2/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.abstract/CloudPlatform/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeImageFaaSFunction/appearance/smallIcon.png
+Content-Type: image/png
+
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeLambda/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.abstract/Database/README.md
+Content-Type: text/x-web-markdown
+
+Name: relationshiptypes/radon.relationships.monitoring/AWSIsMonitoredBy/README.md
+Content-Type: text/x-web-markdown
+
+Name: servicetemplates/radon.blueprints.examples/datapipe-webinar-1/files/InvokeLambda_0/credFile/aws-credentials
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunctionFromS3/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsApiGateway/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.datapipeline/PipelineBlock/files/start/start.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/ApiGateway/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.abstract/Database/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: _definitions/radonnodesdatapipelinedestination__PubGCS.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonnodesaws__AwsDynamoDBTable.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/ContainerRuntime/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.datapipeline/PipelineBlock/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/appearance/smallIcon.png
+Content-Type: image/jpeg
+
+Name: nodetypes/radon.nodes.aws/AwsS3Bucket/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsMinIO/files/templateFile_localConn/MinIOBucket_SRC_PG_LocalConn.xml
+Content-Type: application/xml
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunctionFromS3/files/delete/delete.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsS3Bucket/files/delete/delete.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.nifi/Nifi/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.VM/OpenStack/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: _definitions/radonnodesdocker__DockerApplication.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonnodesaws__AwsLambdaFunction.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonrelationshipsdatapipeline__ConnectNifiRemote.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/ContainerRuntime/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: relationshiptypes/radon.relationships.aws/AwsApiGatewayTriggers/LICENSE
+Content-Type: text/plain
+
+Name: relationshiptypes/radon.relationships.aws/AwsApiGatewayTriggers/files/pre_configure_source.yml
+Content-Type: text/plain
+
+Name: relationshiptypes/radon.relationships.datapipeline/ConnectNifiRemote/files/remoteConnection.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/CloudPlatform/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonnodesdatapipelinedestination__PublishRemote.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonnodesabstract__ObjectStorage.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.VM/OpenStack/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsMinIO/files/templateFile_RmtConn/MinIOBucket_SRC_PG_RmtConn.xml
+Content-Type: application/xml
+
+Name: nodetypes/radon.nodes.monitoring/PushGateway/files/create/create.yml
+Content-Type: text/plain
+
+Name: relationshiptypes/radon.relationships.aws/AwsApiGatewayTriggers/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/files/delete/delete.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsS3Bucket/files/create/create.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/ObjectStorage/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.aws/AwsDynamoDBTable/files/create/create.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsMinIO/files/configure/configure.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/ContainerRuntime/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: _definitions/radonnodesdatapipelinesource__ConsumeDataEndPoint.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/Function/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonnodesdatapipelineprocess__InvokeLambda.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonrelationships__ConnectsTo.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsumeRemote/README.md
+Content-Type: text/x-web-markdown
+
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeLambda/files/templateFile_localConn/AWSlambda_localConn.xml
+Content-Type: application/xml
+
+Name: capabilitytypes/radon.capabilities/Invocable/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonnodesdatapipeline__MidwayPB.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunctionFromS3/appearance/smallIcon.png
+Content-Type: image/jpeg
+
+Name: nodetypes/radon.nodes.VM/EC2/files/create/create.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.destination/PublishRemote/README.md
+Content-Type: text/x-web-markdown
+
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/files/configure/configure.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsApiGateway/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: relationshiptypes/radon.relationships.monitoring/AWSIsMonitoredBy/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonartifacts__Ansible.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: relationshiptypes/radon.relationships.aws/AwsTriggers/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeImageFaaSFunction/README.md
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/DataPipeline/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: capabilitytypes/radon.capabilities.monitoring/Monitor/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.process/InvokeImageFaaSFunction/files/stop/stop.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/ObjectStorage/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.aws/AwsDynamoDBTable/appearance/smallIcon.png
+Content-Type: image/jpeg
+
+Name: relationshiptypes/radon.relationships.aws/AwsApiGatewayTriggers/files/generator.py
+Content-Type: text/x-python
+
+Name: nodetypes/radon.nodes.docker/DockerApplication/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radoncapabilitiesdatapipeline__ConnectToPipeline.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsumeRemote/LICENSE
+Content-Type: text/plain 
+
+
+Name: nodetypes/radon.nodes.aws/AwsS3Bucket/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.datapipeline.source/ConsumeDataEndPoint/LICENSE
+Content-Type: text/plain
+
+Name: relationshiptypes/radon.relationships.aws/AwsTriggers/files/event-binding.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/ContainerRuntime/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.abstract/CloudPlatform/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radoncapabilities__Invocable.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
