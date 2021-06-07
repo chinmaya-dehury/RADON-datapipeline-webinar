@@ -45,7 +45,7 @@ This demonstrates following capapabilities of RADON data pipeline.
     * [xOpera orchestrator](local-sy-configuration/xopera/xopera.md)
 
 <!-- ## Pre-modelling configurations -->
-### 2.2. Gathering & preparing keys/credentials
+### 2.1. Gathering & preparing keys/credentials
 Note down or prepare following files/keys/credentials
 * Google credentials
     * Google credentials to write data to Google storage bucket
