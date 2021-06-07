@@ -82,6 +82,16 @@ aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \
 
 
 
+## Pre-deployment configuration
+### Configuraton of AWS security group 
+* go to the the [`Security Group`](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#SecurityGroups:) EC2 feature.
+* Find and click on the default security group.
+* Select `Inbound rules` -> `Edit inbound rules` button
+* Click on `Add rule` button and add a rule with following options
+    * **Type** = `Custome TCP`
+    * **Port range** = `8080` This is the port of Nifi instance. You may change this as per your requirement. The same port should be used in later stage.
+    * **Source** = `Anywhere`
+* Now click on `Save rules` to save this inbound rule.
 
 ## **Deploying** service blueprint through xOpera SaaS
 In the RADON IDE, make sure you have the csar exported.
@@ -108,12 +118,13 @@ pip install -U opera[openstack]
 Details steps are available [here](https://xlab-si.github.io/xopera-docs/opera_cli.html)
 ### Fixing the service template from potential future errors
 * Open the service template (the .tosca file)
-* Check if somewhere `"{get_artifact: ....}"` line is with in double quote. If so just remove the double quote. 
+* Check if somewhere `"{get_artifact: ....}"` line is within double quote. If so just remove the double quote. 
 * e.g. `cred_file_path: "{ get_artifact: [SELF, credFile ] }"` should be changed to `cred_file_path: { get_artifact: [SELF, credFile ] }`
 
-### Configuring EC2
+### Configuring EC2 and OpenStack keyFiles
 * go to ./servicetemplates/radon.blueprints.example/datapipe-webinar/files/EC2_0/keyFile
 * chmod 400 radon-pipeline.pem
+__Make sure that other key file for OpenStack Instance (if any) have the same permission.__
 
 #### Consuming data from MinIO server
 Create a credentials file in `/tmp/` directory of the same VM where you will execute the CSAR with opera command.
