@@ -36,12 +36,16 @@ This demonstrates following capapabilities of RADON data pipeline.
 # Stages
 
 ## prerequisites 
-* [MinIO setup](local-sy-configuration/minio/minio.md)
 * Cloud configuration 
     * [Azure cloud setup](cloud-configuration/azure)
     * [AWS cloud](cloud-configuration/aws)
     * Google cloud 
 * Openstack private cloud
+* [Local machine](local-sy-configuration/localMachine.md)
+    * [MinIO setup](local-sy-configuration/minio/minio.md)
+    * [xOpera orchestrator](local-sy-configuration/xopera/xopera.md)
+
+
 
 ## main stages
 We will go through now following steps:
@@ -51,13 +55,14 @@ We will go through now following steps:
 
 ## Pre-modelling configurations
 ### credentials
-* Google
+Note down or prepare following files/keys/credentials
+* Google credentials
     * Google credentials to write data to Google storage bucket
     * Go to [Google Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts)
     * Select the project
     * Under `Actions` (three dots) -> `Manage keys` -> `Create new key` -> `JSON` -> `CREATE`
     * Now the credential json will be downloaded. Save it somewhere.
-* AWS
+* AWS keys 
     * Getting Access Keys
         * Go to IAM service
         * Click on **My access key** under _Quick links_
@@ -66,16 +71,8 @@ We will go through now following steps:
         * Go to **EC2** service
         * Under **Network & Secutiry**, click on **Key Pairs**.
         * Create a new one here and download it and save it somewhere.
-* Openstack
+* Openstack key
     * Get the public key to connect to Openstack VM. Ask you Openstack administrator if you dont find one.
-
-### Summary
-**Name** -> **Path** -> **FileMode**   
-openstack-chinmayadehury  ->  /root/.ssh/openstack/openstack-chinmayadehury  -> 755 \
-minio-credentials ->  /root/.ssh/minio/minio-credentials  -> 755 \
-google-cloud-storage  -> /root/.ssh/google/google-cloud-storage  -> 755 \
-ec2-radon-pipeline -> /root/.ssh/ec2/ec2-radon-pipeline -> 400 \
-aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \
 
 
 ## **Modelling** service blueprint with RADON IDE\
@@ -83,7 +80,17 @@ Here, you need to invoke the RADON GMT to model your service template in a web g
 Here, you can either use the existing CSAR ( modify according to your requirement) OR create a service template from the scratch:
 ### Create from scratch
 ### Reuse the existing CSAR
+If you are reusing the existing CSAR, make sure that you have modified the following essential properties of tosca nodes
 
+* EC2 node
+* AWS platform node
+* Openstack node
+    * key_name
+* two Nifi nodes 
+* ConsMinIO
+* InvokeLambda for Img_grayscale and Img_watermark 
+* InvokeImageFaaSFunction
+* PubGCS
     
 Open the GMT 
 Add following nodes 
@@ -113,18 +120,28 @@ Create a input.yml with following content inside the radon-particles tree
 ```
 </details>
 
+Before deploying the csar, open the xOpera SaaS to provide your keys and credentials.        
+Following are the different keys and credentials files. The keys **openstack-chinmayadehury** and  **ec2-radon-pipeline** should be in 400 permission mode. 
+**Name** -> **Path** -> **FileMode**   
+openstack-chinmayadehury  ->  /root/.ssh/openstack/openstack-chinmayadehury  -> 400 \
+minio-credentials ->  /root/.ssh/minio/minio-credentials  -> 755 \
+google-cloud-storage  -> /root/.ssh/google/google-cloud-storage  -> 755 \
+ec2-radon-pipeline -> /root/.ssh/ec2/ec2-radon-pipeline -> 400 \
+aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \
+
+
 ## **Deploying** service blueprint through CLI
-### Quick xOpera CLI installation steps:
-```bash
-sudo apt update
-sudo apt install -y python3-venv python3-wheel python-wheel-common
-mkdir ~/opera && cd ~/opera
-python3 -m venv .venv && . .venv/bin/activate
-pip install --upgrade pip
-pip install opera
-pip install -U opera[openstack]
-```
-Detailed steps to install xOpera are available [here](https://xlab-si.github.io/xopera-docs/opera_cli.html)
+* Open the RADON GMT tool.
+* Go to **Service Templates** tab
+* Find and open your service template
+* Click on `Export` -> `Download`
+* This will download your service template in `csar` format
+* Rename the extension of the downloaded service template from `csar` to `zip`
+* Unzip the service template
+
+Now go through below steps
+
+
 ### Fixing the service template from potential future errors
 * Open the service template (the .tosca file)
 * Check if somewhere `"{get_artifact: ....}"` line is within double quote. If so just remove the double quote. 
@@ -137,6 +154,7 @@ __Make sure that other key file for OpenStack Instance (if any) have the same pe
 
 
 ### invoke xOpera for deployment: Final Step
+* At this stage, it is expected that you have the downloaded the service template
 
 <img src="img/finalDeployComndOutput.PNG">
 
