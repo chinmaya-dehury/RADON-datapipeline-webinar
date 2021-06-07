@@ -138,7 +138,7 @@ __Make sure that other key file for OpenStack Instance (if any) have the same pe
 
 ### invoke xOpera for deployment: Final Step
 
-<img src="img/finalDeployComndOutput.png">
+<img src="img/finalDeployComndOutput.PNG">
 
 #### Consuming data from MinIO server
 Create a credentials file in `/tmp/` directory of the same VM where you will execute the CSAR with opera command.
