@@ -29,13 +29,12 @@ This demonstrates following capapabilities of RADON data pipeline.
 * Data pipeline and Serverless integration
 * No cloud solution vendor lock-in with RADON data pipeline
 
-# System Requirement
+## 1. System Requirement
 * Python v3.6 as the python runtime for Lambda function.
 * Python v3.7 for the creating and deploying of the Azure function.
 
-# Stages
 
-## prerequisites 
+## 2. Prerequisites 
 * Cloud configuration 
     * [Azure cloud setup](cloud-configuration/azure)
     * [AWS cloud](cloud-configuration/aws)
@@ -45,14 +44,8 @@ This demonstrates following capapabilities of RADON data pipeline.
     * [MinIO setup](local-sy-configuration/minio/minio.md)
     * [xOpera orchestrator](local-sy-configuration/xopera/xopera.md)
 
-
-Now, we will go through following steps:
-* Creating service blueprint with RADON IDE
-* Deploying service blueprint
-* Verifying the service dpeloyment
-
-## Pre-modelling configurations
-### credentials
+<!-- ## Pre-modelling configurations -->
+### 2.2. Gathering & preparing keys/credentials
 Note down or prepare following files/keys/credentials
 * Google credentials
     * Google credentials to write data to Google storage bucket
@@ -73,13 +66,25 @@ Note down or prepare following files/keys/credentials
     * Get the public key to connect to Openstack VM. Ask you Openstack administrator if you dont find one.
 
 
-## **Modelling** service blueprint with RADON IDE\
+### 2.2. Configuraton of AWS security group 
+Make sure you have gone through [this](cloud-configuration/aws/readme.md#configuraton-of-aws-security-group) step.
+
+## 3. Main steps
+Now, we will go through following steps:
+* Modelling service blueprint with RADON IDE
+* Deploying service blueprint
+    * using xOpera saas
+    * using xOpera CLI 
+* Verifying the service dpeloyment
+
+## 3.1. **Modelling** service blueprint with RADON IDE
 Here, you need to invoke the RADON GMT to model your service template in a web graphical interface. After that you need to export the modelled service template into a CSAR.   
 Here, you can either use the existing CSAR ( modify according to your requirement) OR create a service template from the scratch:
-### Create from scratch
-### Reuse the existing CSAR
-If you are reusing the existing CSAR, make sure that 
-* you have modified the following essential properties of tosca nodes
+### 3.1.1. Create from scratch
+### 3.1.2. Reuse the existing CSAR
+If you want to reuse the existing CSAR, 
+* download [service template](ServiceTemplate) folder 
+* make sure that you have modified the following essential properties of tosca nodes in the [radonblueprintsexamples__datapipe-webinar-1.tosca](ServiceTemplate/_definitions/radonblueprintsexamples__datapipe-webinar-1.tosca) file inside ___definitions__ folder.
     * EC2 node
         * Update `ssh_key_name`, `vpc_subnet_id`
         * `image: "ami-0b850cf02cc00fdc8"` is recommended, as this is __centos__ image and this service template is tested on this image.
@@ -104,18 +109,8 @@ If you are reusing the existing CSAR, make sure that
 The final service template in GMT should look like this
 <img src="img/serviceTemplateCSAR.png">
 
-## Pre-deployment configuration
-### Configuraton of AWS security group 
-* go to the the [`Security Group`](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#SecurityGroups:) EC2 feature.
-* Find and click on the default security group.
-* Select `Inbound rules` -> `Edit inbound rules` button
-* Click on `Add rule` button and add a rule with following options
-    * **Type** = `Custome TCP`
-    * **Port range** = `8080` This is the port of Nifi instance. You may change this as per your requirement. The same port should be used in later stage.
-    * **Source** = `Anywhere`
-* Now click on `Save rules` to save this inbound rule.
-
-## **Deploying** service blueprint through xOpera SaaS
+## 3.2. Deploying service blueprint
+### 3.2.1. **Deploying** service blueprint through xOpera SaaS
 In the RADON IDE, make sure you have the csar exported.
 Create a input.yml with following content inside the radon-particles tree
 <details>
@@ -136,7 +131,7 @@ ec2-radon-pipeline -> /root/.ssh/ec2/ec2-radon-pipeline -> 400 \
 aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \
 
 
-## **Deploying** service blueprint through CLI
+### 3.2.2. **Deploying** service blueprint through CLI
 * Open the RADON GMT tool.
 * Go to **Service Templates** tab
 * Find and open your service template

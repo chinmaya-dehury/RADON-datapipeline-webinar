@@ -3,7 +3,17 @@
 In this page, we will manually develop the lambda functions required in this webinar.    
 Here, we need two functions:
 * function to _grascale_ the input image.
-* function to _watermark_ the grayscale image.
+* function to _blur_ the grayscale image.
+
+### Configuraton of AWS security group 
+* go to the [`Security Group`](https://eu-west-1.console.aws.amazon.com/ec2/v2/home?region=eu-west-1#SecurityGroups:) EC2 feature.
+* Find and click on the default security group.
+* Select `Inbound rules` -> `Edit inbound rules` button
+* Click on `Add rule` button and add a rule with following options
+    * **Type** = `Custome TCP`
+    * **Port range** = `8080` This is the port of Nifi instance. You may change this as per your requirement. The same port should be used in later stage.
+    * **Source** = `Anywhere`
+* Now click on `Save rules` to save this inbound rule.
 
 ## Things you should notedown:
 * S3 bucket name: radon-utr-webinar-bootcamp
@@ -14,7 +24,7 @@ Here, we need two functions:
     * img-watermark-nifi
 * Download the [img-grayscale-nifi](functions/img-grayscale-nifi) and [img-watermark-nifi](functions/img-grayscale-nifi) functions and deploy in AWS lambda service.
 
-## Prerequisite (the following steps may not be required)
+## Prerequisite (the following steps may not be required for [this](https://github.com/chinmaya-dehury/radon-datapipeline-webinar) webinar)
 Add a HTTP API Gateway 
 1. Go to API Gateway service : https://eu-west-1.console.aws.amazon.com/apigateway/home?region=eu-west-1
 2. Make sure that the required region is selected.
