@@ -48,7 +48,7 @@ This demonstrates following capapabilities of RADON data pipeline.
 ### 2.1. Gathering & preparing keys/credentials
 Note down or prepare following files/keys/credentials
 * Google credentials
-    * Google credentials to write data to Google storage bucket
+    * Gather Google credentials to write data to Google storage bucket
     * Go to [Google Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts)
     * Select the project
     * Under `Actions` (three dots) -> `Manage keys` -> `Create new key` -> `JSON` -> `CREATE`
@@ -77,11 +77,37 @@ Now, we will go through following steps:
     * using xOpera CLI 
 * Verifying the service dpeloyment
 
-## 3.1. **Modelling** service blueprint with RADON IDE
-Here, you need to invoke the RADON GMT to model your service template in a web graphical interface. After that you need to export the modelled service template into a CSAR.   
+## 3.1 Accessing RADON IDE
+Get yourself acquented with the [RADON Integrated Development Environment](https://radon-ide.readthedocs.io/en/latest/). 
+
+Follow the steps mentioned [here](https://radon-ide.readthedocs.io/en/latest/#getting-started) to 
+* Create an acount and access RADON IDE
+* Create a RADON workspace ([steps](https://radon-ide.readthedocs.io/en/latest/#create-a-radon-workspace))
+* Launch Graphical Modeling Tool ([steps](https://radon-ide.readthedocs.io/en/latest/#id1))
+
+
+## 3.2. **Modelling** service blueprint with RADON IDE
+Here, you need to launch the RADON GMT to model your service template in a web graphical interface. 
+
+After that you need to export the modelled service template into a CSAR.   
 Here, you can either use the existing CSAR ( modify according to your requirement) OR create a service template from the scratch:
-### 3.1.1. Create from scratch
-### 3.1.2. Reuse the existing CSAR
+### 3.2.1. Create from scratch
+* Please follow these [steps](https://winery.readthedocs.io/en/latest/user/yml/index.html#modeling-an-application) to create a new service template. \
+You dont need to model node templates or define relationship between node templates as mentioned in that above-mentioned link.
+* In the __Service Template Detail__ view, open the __Topology Modeler__ by clicking on ``Topology Template`` > ``Open Editor`` 
+* In the __Topology Modeler__, add the following nodes with properties and artifacts
+|   | Node type                   | Properties                                                                                                                                                                                                   | Artifacts                                                  |
+|---|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
+| 1 | radon.nodes.VM.OpenStack    | flavor: "m1.medium"<br>key_name: "chinmayadehury"<br>image: "13a94b11-98ee-43a4-ad29-00ae97e8f790"<br>ssh_username: "centos"<br>name: "NifiHost2-temp"<br>network: "provider_64_net"                         | No artifact needed                                         |
+| 2 | radon.nodes.aws.AwsPlatform | name: "AWS"<br>region: "eu-west-1"                                                                                                                                                                           | No artifact needed                                         |
+| 3 | radon.nodes.VM.EC2          | image: "ami-0b850cf02cc00fdc8"<br>ssh_key_name: "radon-pipeline"<br>vpc_subnet_id: "subnet-82dfabd8"<br>instance_type: "t2.medium"<br>ssh_key_file: "{ get_artifact: [SELF, keyFile]}"<br>ssh_user: "centos" | name: keyFile<br>type: File<br>file: <upload here EC2 key> |
+| 4 |                             |                                                                                                                                                                                                              |                                                            |
+| 5 |                             |                                                                                                                                                                                                              |                                                            |
+
+* Now save the service template by clicking on `save` button.
+* Follow the steps [here](https://winery.readthedocs.io/en/latest/user/yml/index.html#export-csar) to export your service template.
+
+### 3.2.2. Reuse the existing CSAR
 If you want to reuse the existing CSAR, 
 * download [service template](ServiceTemplate) folder 
 * make sure that you have modified the following essential properties of tosca nodes in the [radonblueprintsexamples__datapipe-webinar-1.tosca](ServiceTemplate/_definitions/radonblueprintsexamples__datapipe-webinar-1.tosca) file inside ___definitions__ folder.
@@ -109,8 +135,8 @@ If you want to reuse the existing CSAR,
 The final service template in GMT should look like this
 <img src="img/serviceTemplateCSAR.png">
 
-## 3.2. Deploying service blueprint
-### 3.2.1. **Deploying** service blueprint through xOpera SaaS
+## 3.3. Deploying service blueprint
+### 3.3.1. **Deploying** service blueprint through xOpera SaaS
 In the RADON IDE, make sure you have the csar exported.
 Create a input.yml with following content inside the radon-particles tree
 <details>
@@ -131,7 +157,7 @@ ec2-radon-pipeline -> /root/.ssh/ec2/ec2-radon-pipeline -> 400 \
 aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \
 
 
-### 3.2.2. **Deploying** service blueprint through CLI
+### 3.3.2. **Deploying** service blueprint through CLI
 * Open the RADON GMT tool.
 * Go to **Service Templates** tab
 * Find and open your service template
