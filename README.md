@@ -38,7 +38,7 @@ This demonstrates following capapabilities of RADON data pipeline.
 * Cloud configuration 
     * [Azure cloud setup](cloud-configuration/azure)
     * [AWS cloud](cloud-configuration/aws)
-    * Google cloud 
+    * [Google cloud](cloud-configuration/google) 
 * Openstack private cloud
 * [Local machine](local-sy-configuration/localMachine.md)
     * [MinIO setup](local-sy-configuration/minio/minio.md)
@@ -69,7 +69,7 @@ Note down or prepare following files/keys/credentials
 ### 2.2. Configuraton of AWS security group 
 Make sure you have gone through [this](cloud-configuration/aws/readme.md#configuraton-of-aws-security-group) step.
 
-## 3. Main steps
+# 3. Main steps
 Now, we will go through following steps:
 * Modelling service blueprint with RADON IDE
 * Deploying service blueprint
