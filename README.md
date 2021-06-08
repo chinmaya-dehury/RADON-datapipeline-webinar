@@ -97,16 +97,23 @@ You dont need to model node templates or define relationship between node templa
 * In the __Service Template Detail__ view, open the __Topology Modeler__ by clicking on ``Topology Template`` > ``Open Editor`` 
 * In the __Topology Modeler__, add the following nodes with properties and artifacts
 
-    |   | Node type                   | Properties                                                                                                                                                                                                   | Artifacts                                                  |
-    |---|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
-    | 1 | radon.nodes.VM.OpenStack    | flavor: "m1.medium"<br>key_name: "chinmayadehury"<br>image: "13a94b11-98ee-43a4-ad29-00ae97e8f790"<br>ssh_username: "centos"<br>name: "NifiHost2-temp"<br>network: "provider_64_net"                         | No artifact needed                                         |
-    | 2 | radon.nodes.aws.AwsPlatform | name: "AWS"<br>region: "eu-west-1"                                                                                                                                                                           | No artifact needed                                         |
-    | 3 | radon.nodes.VM.EC2          | image: "ami-0b850cf02cc00fdc8"<br>ssh_key_name: "radon-pipeline"<br>vpc_subnet_id: "subnet-82dfabd8"<br>instance_type: "t2.medium"<br>ssh_key_file: "{ get_artifact: [SELF, keyFile]}"<br>ssh_user: "centos" | name: keyFile<br>type: File<br>file: <upload here EC2 key> |
-    | 4 |                             |                                                                                                                                                                                                              |                                                            |
-    | 5 |                             |                                                                                                                                                                                                              |                                                            |
-
-
+    |    | Node type                                              | Properties                                                                                                                                                                                    | Artifacts                                                                |
+    |----|--------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+    | 1  | radon.nodes.VM.OpenStack                               | flavor: m1.medium<br>key_name: <UPDATE HERE><br>image: 13a94b11-98ee-43a4-ad29-00ae97e8f790<br>ssh_username: centos<br>name: NifiHost2-temp<br>network: provider_64_net                       | No artifact needed                                                       |
+    | 2  | radon.nodes.aws.AwsPlatform                            | name: AWS<br>region: eu-west-1 <update this if required>                                                                                                                                      | No artifact needed                                                       |
+    | 3  | radon.nodes.VM.EC2                                     | image: ami-0b850cf02cc00fdc8<br>ssh_key_name: <UPDATE HERE><br>vpc_subnet_id: <UPDATE HERE><br>instance_type: t2.medium<br>ssh_key_file: { get_artifact: [SELF, keyFile]}<br>ssh_user: centos | name: keyFile<br>type: File<br>file: <upload here EC2 key>               |
+    | 4  | radon.nodes.nifi.Nifi                                  | port: 8080<br>webinterface_public: true<br>component_version: 1.13.2                                                                                                                          | No artifact needed                                                       |
+    | 5  | radon.nodes.nifi.Nifi                                  | port: 8080<br>webinterface_public: true<br>component_version: 1.13.2                                                                                                                          | No artifact needed                                                       |
+    | 6  | No artifactradon.nodes.datapipeline.destination.PubGCS | BucketName: <UPDATE HERE><br>cred_file_path: { get_artifact: [SELF, credFile ] }<br>ProjectID: <UPDATE HERE>                                                                                  | name: credFile<br>type: File<br>file: <upload here Google credentials>   |
+    | 7  | radon.nodes.datapipeline.process.InvokeLambda          | cred_file_path: { get_artifact: [SELF, credFile]}<br>function_name: img-blur-nifi<br>region: eu-west-1  <update this if required>                                                             | name: credFile<br>type: File<br>file: <upload here AWS credentials>      |
+    | 8  | radon.nodes.datapipeline.process.InvokeLambda          | cred_file_path: { get_artifact: [SELF, credFile]}<br>function_name: img-grayscale-nifi<br>region: eu-west-1  <update this if required>                                                        | name: credFile<br>type: File<br>file: <upload here AWS credentials>      |
+    | 9  | radon.nodes.datapipeline.source.ConsMinIO              | BucketName: firstbucket<br>cred_file_path: { get_artifact: [SELF, credentials]}<br>MinIO_Endpoint: http://ip.of.your.minioServer:portnumber                                                   | name: credentials<br>type: File<br>file: <upload here MinIO credentials> |
+* Now link all the node types as given below.
+    * Note: make sure that relationeships/edges are having correct lebels such as `HostedOn`, `ConnectNifiRemote`, and `ConnectNifiLocal`.
+Now the service template should look like below figures:
+<img src="img/serviceTemplateCSAR.png">
 * Now save the service template by clicking on `save` button.
+* Once saved, close the  __Topology Modeler__ window.
 * Follow the steps [here](https://winery.readthedocs.io/en/latest/user/yml/index.html#export-csar) to export your service template.
 
 ### 3.2.2. Reuse the existing CSAR
@@ -134,33 +141,36 @@ If you want to reuse the existing CSAR,
     * PubGCS
         * Update `BucketName`, `ProjectID` 
 
-The final service template in GMT should look like this
-<img src="img/serviceTemplateCSAR.png">
-
 ## 3.3. Deploying service blueprint
 ### 3.3.1. **Deploying** service blueprint through xOpera SaaS
-In the RADON IDE, make sure you have the csar exported.
-Create a input.yml with following content inside the radon-particles tree
-<details>
-    <summary>input.yml</summary>
 
-```
-{}
-```
-</details>
+``In this webinar, we will use only the CLI version of xOpera.``
 
-Before deploying the csar, open the xOpera SaaS to provide your keys and credentials.        
-Following are the different keys and credentials files. The keys **openstack-chinmayadehury** and  **ec2-radon-pipeline** should be in 400 permission mode. 
-**Name** -> **Path** -> **FileMode**   
-openstack-chinmayadehury  ->  /root/.ssh/openstack/openstack-chinmayadehury  -> 400 \
-minio-credentials ->  /root/.ssh/minio/minio-credentials  -> 755 \
-google-cloud-storage  -> /root/.ssh/google/google-cloud-storage  -> 755 \
-ec2-radon-pipeline -> /root/.ssh/ec2/ec2-radon-pipeline -> 400 \
-aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \
+<!-- 
+    In the RADON IDE, make sure you have the csar exported.
+    Create a input.yml with following content inside the radon-particles tree
+    <details>
+        <summary>input.yml</summary>
+
+    ```
+    {}
+    ```
+    </details>
+
+    Before deploying the csar, open the xOpera SaaS to provide your keys and credentials.        
+    The keys **openstack-chinmayadehury** and  **ec2-radon-pipeline** should be in 400 permission mode. 
+    Following are the different keys and credentials files. 
+    **Name** -> **Path** -> **FileMode**   
+    openstack-chinmayadehury  ->  /root/.ssh/openstack/openstack-chinmayadehury  -> 400 \
+    minio-credentials ->  /root/.ssh/minio/minio-credentials  -> 755 \
+    google-cloud-storage  -> /root/.ssh/google/google-cloud-storage  -> 755 \
+    ec2-radon-pipeline -> /root/.ssh/ec2/ec2-radon-pipeline -> 400 \
+    aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \ 
+-->
 
 
 ### 3.3.2. **Deploying** service blueprint through CLI
-* Open the RADON GMT tool.
+* Launch the RADON GMT tool from the IDE.
 * Go to **Service Templates** tab
 * Find and open your service template
 * Click on `Export` -> `Download`
@@ -169,7 +179,6 @@ aws-credentials -> /root/.ssh/aws/aws-credentials -> 755 \
 * Unzip the service template
 
 Now go through below steps
-
 
 ### Fixing the service template from potential future errors
 * Open the service template (the .tosca file)
