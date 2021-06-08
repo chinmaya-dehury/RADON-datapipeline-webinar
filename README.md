@@ -5,7 +5,7 @@ This repository mainly focuses on demonstration of modeling and orchestration of
 # What to Demonstrate?
 We will implement following usecase, where, you upload your image to MinIO bucket as the input. As output, the grayscale and blurred image will be stored in your Google Cloud Storage bucket and the same modified image will be compressed and stored in Azure Blob storage.
 
-<img src="img/main-worklow.jpg">
+<img src="img/main-workflow.jpg">
 
 *  First phase of the webinar
     *  Open RADON IDE
