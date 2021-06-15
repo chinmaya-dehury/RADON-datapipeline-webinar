@@ -29,12 +29,12 @@ This demonstrates following capapabilities of RADON data pipeline.
 * Data pipeline and Serverless integration
 * No cloud solution vendor lock-in with RADON data pipeline
 
-## 1. System Requirement
+# 1. System Requirement
 * Python v3.6 as the python runtime for Lambda function.
 * Python v3.7 for the creating and deploying of the Azure function.
 
 
-## 2. Prerequisites 
+# 2. Prerequisites 
 * Cloud configuration 
     * [Azure cloud setup](cloud-configuration/azure)
     * [AWS cloud](cloud-configuration/aws)
@@ -46,7 +46,7 @@ This demonstrates following capapabilities of RADON data pipeline.
     3. [xOpera orchestrator](local-sy-configuration/xopera/xopera.md)
 
 <!-- ## Pre-modelling configurations -->
-### 2.1. Gathering & preparing keys/credentials
+## 2.1. Gathering & preparing keys/credentials
 Note down or prepare following files/keys/credentials
 * Google credentials
     * Gather Google credentials to write data to Google storage bucket
@@ -67,7 +67,7 @@ Note down or prepare following files/keys/credentials
     * Get the public key to connect to Openstack VM. Ask you Openstack administrator if you dont find one.
 
 
-### 2.2. Configuraton of AWS security group 
+## 2.2. Configuraton of AWS security group 
 Make sure you have gone through [this](cloud-configuration/aws/readme.md#configuraton-of-aws-security-group) step.
 
 # 3. Main steps
