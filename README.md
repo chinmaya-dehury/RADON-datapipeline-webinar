@@ -123,6 +123,7 @@ You dont need to model node templates or define relationship between node templa
     | 7  | radon.nodes.datapipeline.process.InvokeLambda          | cred_file_path: { get_artifact: [SELF, credFile]}<br>function_name: img-blur-nifi<br>region: eu-west-1  <update this if required>                                                             | name: credFile<br>type: File<br>file: <upload here AWS credentials>      |
     | 8  | radon.nodes.datapipeline.process.InvokeLambda          | cred_file_path: { get_artifact: [SELF, credFile]}<br>function_name: img-grayscale-nifi<br>region: eu-west-1  <update this if required>                                                        | name: credFile<br>type: File<br>file: <upload here AWS credentials>      |
     | 9  | radon.nodes.datapipeline.source.ConsMinIO              | BucketName: firstbucket<br>cred_file_path: { get_artifact: [SELF, credentials]}<br>MinIO_Endpoint: http://ip.of.your.minioServer:portnumber                                                   | name: credentials<br>type: File<br>file: <upload here MinIO credentials> |
+    | 10  | radon.nodes.datapipeline.process.InvokeImageFaaSFunction | function_URL: < Give your function url > <br> HTTP_method: POST   | No artifact needed |
 * Now link all the node types as given below.
     * Note: make sure that relationeships/edges are having correct lebels such as `HostedOn`, `ConnectNifiRemote`, and `ConnectNifiLocal`.
 Now the service template should look like below figures:
