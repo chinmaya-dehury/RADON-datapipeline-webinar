@@ -8,3 +8,5 @@
     `sudo systemctl start docker`
 * Verify that it’s running:     
     `sudo systemctl status docker`
+
+For more information on installing Docker on other platform, follow [here](https://docs.docker.com/engine/install/)

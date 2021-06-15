@@ -91,7 +91,7 @@ If you are unable to get access to IDE, you can create a RADON GMT docker contai
 Here is command to run RADON GMT docker command:
 ```bash
 sudo docker run -it -p 8089:8080 \
-    --name branch_dp_tmplt_part3 \
+    --name radon-gmt \
     -d \
     -e WINERY_FEATURE_RADON=true \
     -e WINERY_REPOSITORY_PROVIDER=yaml \
