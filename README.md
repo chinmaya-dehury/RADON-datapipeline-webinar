@@ -2,7 +2,7 @@
 
 This repository mainly focuses on demonstration of modeling and orchestration of TOSCA-based data pipeline services using RADON tools.
 
-# What to Demonstrate?
+# What to Demonstrate
 We will implement following usecase, where, you upload your image to MinIO bucket as the input. As output, the grayscale and blurred image will be stored in your Google Cloud Storage bucket and the same modified image will be compressed and stored in Azure Blob storage.
 
 <img src="img/main-workflow.jpg">
@@ -41,8 +41,9 @@ This demonstrates following capapabilities of RADON data pipeline.
     * [Google cloud](cloud-configuration/google) 
 * Openstack private cloud
 * [Local machine](local-sy-configuration/localMachine.md)
-    * [MinIO setup](local-sy-configuration/minio/minio.md)
-    * [xOpera orchestrator](local-sy-configuration/xopera/xopera.md)
+    1. [Docker]() 
+    2. [MinIO setup](local-sy-configuration/minio/minio.md)
+    3. [xOpera orchestrator](local-sy-configuration/xopera/xopera.md)
 
 <!-- ## Pre-modelling configurations -->
 ### 2.1. Gathering & preparing keys/credentials
@@ -84,6 +85,20 @@ Follow the steps mentioned [here](https://radon-ide.readthedocs.io/en/latest/#ge
 * Create an acount and access RADON IDE
 * Create a RADON workspace ([steps](https://radon-ide.readthedocs.io/en/latest/#create-a-radon-workspace))
 * Launch Graphical Modeling Tool ([steps](https://radon-ide.readthedocs.io/en/latest/#id1))
+
+#### If NO access to IDE
+If you are unable to get access to IDE, you can create a RADON GMT docker container atop docker engine on your machine.
+Here is command to run RADON GMT docker command:
+```bash
+sudo docker run -it -p 8089:8080 \
+    --name branch_dp_tmplt_part3 \
+    -d \
+    -e WINERY_FEATURE_RADON=true \
+    -e WINERY_REPOSITORY_PROVIDER=yaml \
+    -e WINERY_REPOSITORY_URL=https://github.com/chinmaya-dehury/radon-particles \
+    opentosca/radon-gmt:latest 
+```
+Now, access the RADON GMT through your browser using the address ``<ip address>:8089``
 
 
 ## 3.2. **Modelling** service blueprint with RADON IDE
