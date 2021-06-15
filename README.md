@@ -158,7 +158,7 @@ If you want to reuse the existing CSAR,
         * Update `BucketName`, `ProjectID` 
 
 ## 3.3. Deploying service blueprint
-### 3.3.1. **Deploying** service blueprint through xOpera SaaS
+### 3.3.1. through xOpera SaaS
 
 ``In this webinar, we will use only the CLI version of xOpera.``
 
@@ -185,7 +185,7 @@ If you want to reuse the existing CSAR,
 -->
 
 
-### 3.3.2. **Deploying** service blueprint through CLI
+### 3.3.2. through xOpera CLI
 * Launch the RADON GMT tool from the IDE.
 * Go to **Service Templates** tab
 * Find and open your service template
