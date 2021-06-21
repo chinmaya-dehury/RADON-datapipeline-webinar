@@ -81,8 +81,8 @@ Now, we will go through following steps:
 ## 3.1 Accessing RADON IDE
 Get yourself acquented with the [RADON Integrated Development Environment](https://radon-ide.readthedocs.io/en/latest/). 
 
-Follow the steps mentioned [here](https://radon-ide.readthedocs.io/en/latest/#getting-started) to 
-* Create an acount and access RADON IDE
+Follow below steps to 
+* Create an acount [here](http://che-che.51.11.43.6.nip.io/dashboard/)and access RADON IDE 
 * Create a RADON workspace ([steps](https://radon-ide.readthedocs.io/en/latest/#create-a-radon-workspace))
 * Launch Graphical Modeling Tool ([steps](https://radon-ide.readthedocs.io/en/latest/#id1))
 
