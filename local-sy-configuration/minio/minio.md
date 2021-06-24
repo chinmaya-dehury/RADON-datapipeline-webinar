@@ -10,9 +10,9 @@ As a part of this webinar, here you will install and configure the MioIO server.
 ``` bash
 docker run -p 8081:9000 \
        --name minio1 \
-       -v /home/centos/minio/data:/data 
-       -e "MINIO_ROOT_USER= minio-username" 
-       -e "MINIO_ROOT_PASSWORD= minio-password" 
+       -v /home/centos/minio/data:/data \
+       -e "MINIO_ROOT_USER= minio-username" \
+       -e "MINIO_ROOT_PASSWORD= minio-password" \
        minio/minio server /data
 ```
 Here `MINIO_ROOT_USER` is same as Access Key     
