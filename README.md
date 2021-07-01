@@ -228,3 +228,8 @@ secretKey= your MinIO password or the secret key
 
 
 
+# Webinar recorded video
+* The recorded video will be released soon on [RADON](https://www.youtube.com/channel/UCgoXX6JZ6bDqTxVBRm4KWnQ) Youtube channel.     
+* However, you may request early to see the recorded video, write to chinmaya(dot)dehury(at)ut(dot)ee    
+* To see the extended version of this demo, please write to chinmaya(dot)dehury(at)ut(dot)ee
+
