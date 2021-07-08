@@ -233,6 +233,8 @@ secretKey= your MinIO password or the secret key
     
 * Extended version of this demo is available [here](https://tartuulikool-my.sharepoint.com/:v:/g/personal/dehury_ut_ee/EYz8vS27HhZFj558JsL4UwMBBb6xB2jX56xZDFb8NjoxAw?e=Hf3eO9)
 
+* Presentation file used in this webinar can be found [here](doc/RADON Webinar III-Data Pipeline.pdf).
+
 # Contact Us
 To know more about the webinar demonstration, you may write to [Chinmaya Dehury](mailto:chinmaya.dehury@ut.ee)
 
