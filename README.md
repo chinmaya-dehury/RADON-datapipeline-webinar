@@ -229,7 +229,12 @@ secretKey= your MinIO password or the secret key
 
 
 # Webinar recorded video
-* The recorded video will be released soon on [RADON](https://www.youtube.com/channel/UCgoXX6JZ6bDqTxVBRm4KWnQ) Youtube channel.     
-* However, you may request early to see the recorded video, write to chinmaya(dot)dehury(at)ut(dot)ee    
-* To see the extended version of this demo, please write to chinmaya(dot)dehury(at)ut(dot)ee
+* The recorded video will be released soon on [RADON](https://www.youtube.com/channel/UCgoXX6JZ6bDqTxVBRm4KWnQ) Youtube channel. [Other source](https://tartuulikool-my.sharepoint.com/:v:/g/personal/dehury_ut_ee/EcB-thIDeZlMisl28G49d_kBFfJBkVm82J_FvlMbMkKNgA?e=aIfbNL)    
+    
+* Extended version of this demo is available [here](https://tartuulikool-my.sharepoint.com/:v:/g/personal/dehury_ut_ee/EYz8vS27HhZFj558JsL4UwMBBb6xB2jX56xZDFb8NjoxAw?e=Hf3eO9)
 
+# Contact Us
+To know more about the webinar demonstration, you may write to [Chinmaya Dehury](mailto:chinmaya.dehury@ut.ee)
+
+# Acknowledgement
+This project has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement No. 825040 ([RADON](https://radon-h2020.eu)). 
